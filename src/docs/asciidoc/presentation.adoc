@@ -1,0 +1,249 @@
+= SIPs and SIP Creation
+Tord Svensson <tord.svensson@emc.com>;Ray Sinnema <remon.sinnema@emc.com>
+
+ifndef::sourcedir[:sourcedir: ../../..]
+
+<<<
+
+== What is a SIP?
+
+* SIP = Submission Information Package
+* A file
+* A package containing
+** manifest / packaging information
+** structured data (PDI)
+** unstructured data aka files / content
+
+== SIP Formats
+
+InfoArchive supports several SIP formats OOTB and new ones can be added.
+
+|===
+|Format |Description
+
+|zip_sip
+|A zipped SIP file.
+
+|zip_sip_crypto
+|An encrypted zipped SIP file.
+
+|eas_zip_sip
+|LEGACY For use when ingesting old SIPs (< 4.0)
+
+|eas_zip_sip_crypto
+|LEGACY For use when ingesting old SIPs (< 4.0)
+
+...
+|===
+
+<<<
+
+== ZIP SIP Format
+* The zip_sip format is the most common.
+* A ZIP SIP can have any name and contains:
+** Exactly one manifest (packaging information)
+*** `ia_sip.xml` / `eas_sip.xml`
+*** which must adhere to the `ia_sip.xsd` schema.
+** Exactly one PDI:
+*** `ia_pdi.xml` / `eas_pdi.xml`
+** Any unstructured files (contents).
+
+<<<
+
+== ZIP SIP Example
+
+The below example ZIP SIP contains
+
+* 1 Manifest / Packaging Information
+* 1 PDI
+* 3 content items
+
+image::images/sipexample.png[]
+
+<<<
+
+== Manifest Example
+
+[source,xml]
+----
+include::samples/ia_sip.xml[]
+----
+<1> The name of the holding
+<2> The id of the DSS
+<3> The schema of the data in the PDI contained in this SIP
+<4> The sequence number of this SIP inside the DSS
+<5> Whether this SIP is the last one in the DSS or not
+<6> The number of AIUs inside the SIP
+
+<<<
+
+== PDI Example
+[source,xml]
+----
+include::samples/ia_pdi.xml[]
+----
+
+<<<
+
+== InfoArchive Connectors
+InfoArchive is _connector agnostic_.
+
+* SIPs can be created in whichever way is best
+* A few OOTB tools for common sources:
+** Documentum
+** Sharepoint
+
+== InfoArchive SIP SDK
+* To facilitate SIP creation and ingestion we are proud to present the InfoArchive SIP SDK
+* Open source under Apache 2.0 license
+
+== Feature Overview
+* Assemble SIPs from Plain Old Java Objects (POJOs)
+** Incrementally build SIP to support huge files
+** Build PDI using fluent XML builder or template
+** Multiple segmentation strategies
+** Multiple DSS ID naming strategies
+* Ingest SIPs into InfoArchive 
+
+<<<
+
+== Adding the dependency
+
+=== Gradle
+
+[source,groovy]
+----
+include::samples/build.gradle[]
+----
+<1> TODO: which repository?
+<2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). Note that the latest
+include::../../../gradle.properties[tags=sipSdkVersion]
+
+=== Maven
+
+TODO: Show `pom.xml`
+
+=== Manually
+Download from TODO: location
+
+<<<
+
+== Using the SDK
+
+. Define the packaging information
+. Define what POJOs hold your data
+. Define the conversion from POJOs to PDI
+. Generate one or more SIPs
+
+
+== Define Packaging Information
+
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=manifest]
+----
+
+<<<
+
+== Define POJOs
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Person.java[tags=pojo]
+----
+
+<<<
+
+== Define how to convert POJOs to PDI
+
+=== Using a fluent XML builder
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=conversion]
+----
+<1> Encoded hashes are covered in <<Hashing Contents>>
+
+=== Using a template
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipByTemplate.java[tags=conversion]
+----
+<1> The fixed header
+<2> The fixed footer
+<3> The variable part for each domain object. Use the `model` variable to access the domain object, and `hashes` to
+access the encoded hashes (see <<Hashing Contents>>)
+
+<<<
+
+== Generate SIPs
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=generate]
+----
+<1> Generate the SIP in a randomly named file in the current directory. Other strategies for creating files are
+available, including the option to have full control by providing a `Supplier<File>`
+
+<<<
+
+== Including Contents
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContent.java[tags=extraction]
+----
+<1> `DigitalObject` provides multiple convenience methods to get to an InputStream
+
+== Hashing Contents 
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContentHashing.java[tags=hashing]
+----
+<1> The `HashAssembler` computes a hash of the `DigitalObject` and encodes it in ASCII form. Default is 
+SHA-1 hash with Base64 encoding, but other hash functions are available and so is Hex encoding.
+The result of this hashing is a `EncodedHash` object that contains the hash function, the encoding algorithm, and 
+the encoded hash value. The encoded hashes are made available to the `PdiAssembler` for inclusion in the PDI (see 
+<<Define how to convert POJOs to PDI>>)
+
+<<<
+
+== Batch Generation of SIPs
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSips.java[tags=generate]
+----
+
+== Default Batch Segmentation Strategies
+
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=default]
+----
+<1> All sizes are in number of uncompressed bytes
+
+== Combined Batch Segmentation Strategies
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=combining]
+----
+
+<<<
+
+== Custom Batch Segmentation Strategies
+
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=custom]
+----
+
+<<<
+
+== Ingestion
+
+TODO: Describe ingestion once we have it implemented
+
+<<<
+
+== Conclusion
+
+* EMC InfoArchive SIP SDK makes SIP generation and ingestion easy as pie
+* Open source for maximum exposure
+* Feedback is welcome
+** TODO: Link to GitHub issues

@@ -1,0 +1,151 @@
+buildscript {
+  dependencies { classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11' }
+}
+
+import org.asciidoctor.gradle.AsciidoctorTask
+
+plugins { id 'org.asciidoctor.convert' version '1.5.3' }
+
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'distribution'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+eclipse.classpath {
+  defaultOutputDir = file('classes')
+  file.whenMerged { classpath ->
+    classpath.entries.removeAll { it.kind == 'lib' && it.path.contains("$project.name/$buildDir.name/") }
+  }
+}
+
+asciidoctorj { version = '1.5.4' }
+
+
+task docs { }
+assemble.dependsOn docs
+
+task presentation(type: AsciidoctorTask) {
+  backends    'pdf', 'html5'
+  attributes  'build-gradle': file('build.gradle'),
+              'endpoint-url': 'http://example.org',
+              'source-highlighter' : 'coderay',
+              'toc':'left',
+              'toclevels': '1',
+              'icons': 'font',
+              'setanchors':'true',
+              'idprefix':'',
+              'idseparator':'-',
+              'docinfo1':'true',
+              'pdf-page-size': '297mm x 210mm'
+  sources {
+    include 'presentation.adoc'
+  }
+  resources {
+    from(sourceDir) {
+      include 'images/**'
+      include 'samples/**'
+    }
+  }
+  outputDir new File(buildDir, 'presentation')
+  doLast {
+    ['images', 'samples'].each {
+      new File(outputDir, "pdf/$it").deleteDir()
+    }
+    new File(outputDir, 'html5/samples').deleteDir()
+  }
+}
+docs.dependsOn presentation
+
+task lab(type: AsciidoctorTask) {
+  backends    'pdf', 'html5'
+  attributes  'build-gradle': file('build.gradle'),
+              'endpoint-url': 'http://example.org',
+              'source-highlighter' : 'coderay',
+              'toc':'left',
+              'toclevels': '1',
+              'icons': 'font',
+              'setanchors':'true',
+              'idprefix':'',
+              'idseparator':'-',
+              'docinfo1':'true'
+  sources {
+    include 'lab.adoc'
+  }
+  outputDir new File(buildDir, 'lab')
+  doLast {
+    new File(outputDir, 'pdf/images').deleteDir()
+  }
+}
+docs.dependsOn lab
+
+
+sourceSets {
+  main {
+    java.srcDirs = [file('presentation/java')]
+  }
+  lab {
+    java.srcDir file('lab/java')
+    resources.srcDir file('lab/resources')
+  }
+}
+
+classes.dependsOn compileLabJava
+
+repositories {
+  mavenCentral()
+  ivy {
+    url 'https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/releases/tag'
+    layout 'pattern', {
+      artifact '[revision]/[artifact]-[revision].[ext]'
+    }
+  }
+}
+
+configurations {
+  h2
+  junit
+  sipSdk
+  compile.extendsFrom sipSdk
+  testCompile.extendsFrom junit
+  labCompile.extendsFrom junit, sipSdk
+  runtime.extendsFrom h2
+}
+
+dependencies {
+  h2 'com.h2database:h2:1.4.181'
+  junit 'junit:junit:4.12'
+  sipSdk "com.emc.ia:infoarchive-sip-sdk-core:$sipSdkVersion", 
+      "com.emc.ia:infoarchive-sip-sdk-stringtemplate:$sipSdkVersion"
+  testCompile project.sourceSets.lab.output
+}
+
+
+distributions {
+  main {
+    baseName = 'infoarchive-sip-sdk-lab'
+    contents {
+      from('build') {
+        include 'lab/**/*'
+        include 'presentation/**/*'
+        into 'docs'
+      }
+      from ('gradle') {
+        into 'gradle'
+      }
+      from ('lab') {
+        into 'lab'
+      }
+      from('.') {
+        include 'gradlew*'
+        include 'gradle.properties'
+      }
+    }
+  }
+}
+
+distZip.dependsOn docs
+distTar.enabled = false
+
+
+defaultTasks 'build'

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Calls xmlns="urn:eas-samples:en:xsd:phonecalls.1.0">
+	<Call>
+		<SentToArchiveDate>2001-12-01</SentToArchiveDate>
+		<CallStartDate>2001-11-02T21:06:39.104+01:00</CallStartDate>
+		<CallEndDate>2001-11-02T21:50:07.104+01:00</CallEndDate>
+		<CallFromPhoneNumber>684478207</CallFromPhoneNumber>
+		<CallToPhoneNumber>351244391</CallToPhoneNumber>
+		<CustomerID>000467</CustomerID>
+		<CustomerLastName>White</CustomerLastName>
+		<CustomerFirstName>Lucas</CustomerFirstName>
+		<RepresentativeID>007</RepresentativeID>
+		<Attachments>
+			<Attachment>
+				<AttachmentName>recording</AttachmentName>
+				<FileName>recording11.mp3</FileName>
+				<CreatedBy>PhoneRecorder</CreatedBy>
+				<CreatedOnDate>2001-11-02T21:50:07.104+01:00</CreatedOnDate>
+			</Attachment>
+			<Attachment>
+				<AttachmentName>recording</AttachmentName>
+				<FileName>recording21.mp3</FileName>
+				<CreatedBy>PhoneRecorder</CreatedBy>
+				<CreatedOnDate>2001-11-02T21:50:07.104+01:00</CreatedOnDate>
+			</Attachment>
+		</Attachments>
+	</Call>
+</Calls>

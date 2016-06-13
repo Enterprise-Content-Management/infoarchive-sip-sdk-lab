@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sip xmlns="urn:x-emc:ia:schema:sip:1.0">
+  <dss>
+    <holding>PhoneCalls</holding> <!--1-->
+    <id>1000000</id> <!--2-->
+    <pdi_schema>urn:eas-samples:en:xsd:phonecalls.1.0</pdi_schema> <!--3-->
+    <production_date>2001-12-01T00:00:00.000+01:00</production_date>
+    <base_retention_date>2001-12-01T00:00:00.000+01:00</base_retention_date>
+    <producer>CC</producer>
+    <entity>Platform</entity>
+    <priority>0</priority>
+    <application>UA</application>
+  </dss>
+  <production_date>2001-12-01T00:00:00.000+01:00</production_date>
+  <seqno>1</seqno> <!--4-->
+  <is_last>true</is_last> <!--5-->
+  <aiu_count>3</aiu_count> <!--6-->
+  <page_count>0</page_count>
+</sip>

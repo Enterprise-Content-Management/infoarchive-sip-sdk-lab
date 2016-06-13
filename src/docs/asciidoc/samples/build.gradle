@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+repositories {
+  maven { url = 'http://pls-jfrogrepo.lss.emc.com/artifactory/libs-release-local' } //<1>
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.emc.ia:sip-sdk-core:0.10.1' //<2>
+}
