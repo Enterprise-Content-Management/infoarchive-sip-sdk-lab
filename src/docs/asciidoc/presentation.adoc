@@ -95,7 +95,8 @@ InfoArchive is _connector agnostic_.
 
 == InfoArchive SIP SDK
 * To facilitate SIP creation and ingestion we are proud to present the InfoArchive SIP SDK
-* Open source under Apache 2.0 license
+* Open source under https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License 2.0]
+* Available from https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk[GitHub]
 
 == Feature Overview
 * Assemble SIPs from Plain Old Java Objects (POJOs)
@@ -103,7 +104,7 @@ InfoArchive is _connector agnostic_.
 ** Build PDI using fluent XML builder or template
 ** Multiple segmentation strategies
 ** Multiple DSS ID naming strategies
-* Ingest SIPs into InfoArchive 
+* Ingest SIPs into InfoArchive (work in progress)
 
 <<<
 
@@ -115,18 +116,26 @@ InfoArchive is _connector agnostic_.
 ----
 include::samples/build.gradle[]
 ----
-<1> TODO: which repository?
+<1> All SIP SDK jars are stored in the Central Repository
 <2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). Note that the latest
 include::../../../gradle.properties[tags=sipSdkVersion]
+You may need additional jars if you want to work with a template engine, as discussed in <<Using a template>> 
+
+<<<
 
 === Maven
 
-TODO: Show `pom.xml`
+[source,xml]
+----
+include::samples/pom.xml[tags=dependency]
+----
 
 === Manually
-Download from TODO: location
+
+Download from https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/[GitHub].
 
 <<<
+
 
 == Using the SDK
 
@@ -237,7 +246,7 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Segmentati
 
 == Ingestion
 
-TODO: Describe ingestion once we have it implemented
+Ingestion is currently being worked on.
 
 <<<
 
@@ -246,4 +255,4 @@ TODO: Describe ingestion once we have it implemented
 * EMC InfoArchive SIP SDK makes SIP generation and ingestion easy as pie
 * Open source for maximum exposure
 * Feedback is welcome
-** TODO: Link to GitHub issues
+** Use the https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/issues[GitHub issues]

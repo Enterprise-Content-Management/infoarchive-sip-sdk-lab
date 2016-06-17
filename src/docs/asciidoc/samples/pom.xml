@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.emc.ia</groupId>
+  <artifactId>infoarchive-sip-sdk-velocity</artifactId>
+  <version>1.0.1</version>
+  <name>infoarchive-sip-sdk-velocity</name>
+  <description>A library for building SIP PDI using the Velocity template engine</description>
+  <url>https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk</url>
+  <licenses>
+    <license>
+      <name>Mozilla Public License Version 2.0</name>
+      <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>ray</id>
+      <name>Remon Sinnema</name>
+      <email>remon.sinnema@emc.com</email>
+      <organization>EMC</organization>
+      <timezone>Europe/Amsterdam</timezone>
+    </developer>
+    <developer>
+      <id>tord</id>
+      <name>Tord Svensson</name>
+      <email>tord.svensson@emc.com</email>
+      <organization>EMC</organization>
+      <timezone>Europe/Stockholm</timezone>
+    </developer>
+    <developer>
+      <id>mouli</id>
+      <name>Chandramouli Addaguduru</name>
+      <email>chandramouli.addaguduru@emc.com</email>
+      <organization>EMC</organization>
+      <timezone>Asia/Kolkata</timezone>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk.git</connection>
+    <developerConnection>https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk.git</developerConnection>
+    <url>https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk.git</url>
+  </scm>
+  <dependencies>
+    <!-- tag::dependency[] -->
+    <dependency>
+      <groupId>com.emc.ia</groupId>
+      <artifactId>infoarchive-sip-sdk-core</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <!-- end::dependency[] -->
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity-tools</artifactId>
+      <version>2.0</version>
+    </dependency>
+  </dependencies>
+</project>
