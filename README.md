@@ -8,3 +8,10 @@ makes it quick and easy to create SIPs regardless of what type of data it contai
 from.
 
 This lab helps you understand and apply the InfoArchive SIP SDK.
+
+
+## Quick Start
+
+Download the [distribution](https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk-lab/releases/download/1.0.0/infoarchive-sip-sdk-lab-1.0.0.zip)
+and unpack it somewhere. View the presentation in `docs/presentation` for an overview of the SDK. Then view the
+instructions in `docs/lab` that will guide you through the exercises.
