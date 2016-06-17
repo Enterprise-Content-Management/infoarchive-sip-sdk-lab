@@ -3,7 +3,7 @@
 
 # InfoArchive SIP SDK Lab
 
-The [EMC InfoArchive](http://www.emc.com/enterprise-content-management/infoarchive/) SIP SDK is a Java library that 
+The [InfoArchive SIP SDK](https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/) is a Java library that 
 makes it quick and easy to create SIPs regardless of what type of data it contains or where that data originates
 from.
 
