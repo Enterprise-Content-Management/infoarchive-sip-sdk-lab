@@ -7,6 +7,10 @@ import org.asciidoctor.gradle.AsciidoctorTask
 plugins { id 'org.asciidoctor.convert' version '1.5.3' }
 
 apply plugin: 'java'
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.14'
+}
+
 apply plugin: 'org.asciidoctor.convert'
 apply plugin: 'distribution'
 asciidoctorj { version = '1.5.4' }
@@ -82,29 +86,8 @@ sourceSets {
 
 classes.dependsOn compileLabJava
 
-def depsDir = new File(buildDir, 'deps')
-
-task downloadSdk {
-  outputs.dir depsDir
-  doLast {
-    depsDir.mkdirs()
-    def baseUrl = 'https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/releases/download'
-    ['core', 'stringtemplate'].each {
-      def name = "infoarchive-sip-sdk-$it-${sipSdkVersion}.jar"
-      def url = new URL("$baseUrl/$sipSdkVersion/$name")
-      def file = new File(depsDir, name)
-      file << url.openStream()
-    }
-  }
-}
-
-compileJava.dependsOn downloadSdk
-
 repositories {
   mavenCentral()
-  flatDir {
-    dirs depsDir
-  }
 }
 
 configurations {
@@ -161,7 +144,7 @@ eclipse.classpath {
   defaultOutputDir = file('classes')
   file.whenMerged { classpath ->
     classpath.entries.removeAll { 
-      it.kind == 'lib' && it.path.contains("$project.name/$buildDir.name/") && !it.path.contains(depsDir.name) 
+      it.kind == 'lib' && it.path.contains("$project.name/$buildDir.name/") 
     }
   }
 }
