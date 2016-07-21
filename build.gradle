@@ -8,7 +8,7 @@ plugins { id 'org.asciidoctor.convert' version '1.5.3' }
 
 apply plugin: 'java'
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.14'
+  gradleVersion = '2.14.1'
 }
 
 apply plugin: 'org.asciidoctor.convert'
@@ -103,7 +103,7 @@ configurations {
 dependencies {
   h2 'com.h2database:h2:1.4.181'
   junit 'junit:junit:4.12'
-  sipSdk "com.emc.ia:infoarchive-sip-sdk-core:$sipSdkVersion", 
+  sipSdk "com.emc.ia:infoarchive-sip-sdk-core:$sipSdkVersion",
       "com.emc.ia:infoarchive-sip-sdk-stringtemplate:$sipSdkVersion"
   testCompile project.sourceSets.lab.output
 }
@@ -143,8 +143,8 @@ apply plugin: 'eclipse'
 eclipse.classpath {
   defaultOutputDir = file('classes')
   file.whenMerged { classpath ->
-    classpath.entries.removeAll { 
-      it.kind == 'lib' && it.path.contains("$project.name/$buildDir.name/") 
+    classpath.entries.removeAll {
+      it.kind == 'lib' && it.path.contains("$project.name/$buildDir.name/")
     }
   }
 }
