@@ -32,7 +32,7 @@ public class WhenIncludingCodeSamplesInPresentation {
 
   private static final String NS_PERSON = "urn:eas-samples:en:xsd:persons.1.0";
 
-  private final DirectoryListener directoryListener = new DefaultDirectoryListener();
+  private final DirectoryListener directoryListener = new DefaultDirectoryListener(1);
 
   @Before
   public void init() {
