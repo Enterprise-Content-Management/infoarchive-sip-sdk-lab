@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.emc.ia</groupId>
   <artifactId>infoarchive-sip-sdk-velocity</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.18</version>
   <name>infoarchive-sip-sdk-velocity</name>
   <description>A library for building SIP PDI using the Velocity template engine</description>
   <url>https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk</url>
@@ -48,7 +48,7 @@
     <dependency>
       <groupId>com.emc.ia</groupId>
       <artifactId>infoarchive-sip-sdk-core</artifactId>
-      <version>1.0.1</version>
+      <version>1.1.18</version>
     </dependency>
     <!-- end::dependency[] -->
     <dependency>
