@@ -117,9 +117,10 @@ InfoArchive is _connector agnostic_.
 include::samples/build.gradle[]
 ----
 <1> All SIP SDK jars are stored in the Central Repository
-<2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). Note that the latest
+<2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). We tested this lab with
 include::../../../gradle.properties[tags=sipSdkVersion]
-You may need additional jars if you want to work with a template engine, as discussed in <<Using a template>> 
+. For the latest version, see GitHub or the Maven Central Repository
+You may need additional jars if you want to work with a template engine, as discussed in <<Using a template>>
 
 <<<
 
@@ -200,15 +201,15 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip
 ----
 <1> `DigitalObject` provides multiple convenience methods to get to an InputStream
 
-== Hashing Contents 
+== Hashing Contents
 [source,java,indent=0]
 ----
 include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContentHashing.java[tags=hashing]
 ----
-<1> The `HashAssembler` computes a hash of the `DigitalObject` and encodes it in ASCII form. Default is 
+<1> The `HashAssembler` computes a hash of the `DigitalObject` and encodes it in ASCII form. Default is
 SHA-1 hash with Base64 encoding, but other hash functions are available and so is Hex encoding.
-The result of this hashing is a `EncodedHash` object that contains the hash function, the encoding algorithm, and 
-the encoded hash value. The encoded hashes are made available to the `PdiAssembler` for inclusion in the PDI (see 
+The result of this hashing is a `EncodedHash` object that contains the hash function, the encoding algorithm, and
+the encoded hash value. The encoded hashes are made available to the `PdiAssembler` for inclusion in the PDI (see
 <<Define how to convert POJOs to PDI>>)
 
 <<<
