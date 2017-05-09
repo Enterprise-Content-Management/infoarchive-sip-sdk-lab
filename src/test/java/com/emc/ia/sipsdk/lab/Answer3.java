@@ -9,14 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Collection;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.PackagingInformation;
-import com.emc.ia.sdk.sip.assembly.PdiAssembler;
-import com.emc.ia.sdk.sip.assembly.SipAssembler;
-import com.emc.ia.sdk.sip.assembly.XmlPdiAssembler;
-import com.emc.ia.sdk.support.io.EncodedHash;
+import com.emc.ia.sdk.sip.assembly.*;
 import com.emc.ia.sdk.support.io.FileBuffer;
 import com.emc.ia.sipsdk.lab.exercise3.Exercise3;
 
@@ -40,7 +35,7 @@ public class Answer3 extends Exercise3 {
     PdiAssembler<Country> pdiAssembler = new XmlPdiAssembler<Country>(
         URI.create("urn:emc:ia:sipsdk:lab:country"), "country") {
       @Override
-      protected void doAdd(Country country, Map<String, Collection<EncodedHash>> ignored) {
+      protected void doAdd(Country country, Map<String, ContentInfo> ignored) {
         getBuilder()
             .element("code", country.getCode())
             .element("name", country.getName())

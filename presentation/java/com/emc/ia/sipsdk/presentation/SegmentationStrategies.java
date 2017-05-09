@@ -31,7 +31,8 @@ public final class SegmentationStrategies {
 
     @SuppressWarnings("unused")
     // tag::custom[]
-    SipSegmentationStrategy<Person> byFirstLetterOfLastName = new SipSegmentationStrategy<Person>() {
+    SipSegmentationStrategy<Person> byFirstLetterOfLastName =
+        new SipSegmentationStrategy<Person>() {
       private char current = ' ';
 
       @Override

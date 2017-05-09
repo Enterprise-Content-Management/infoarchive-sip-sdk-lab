@@ -9,20 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Collection;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.BatchSipAssembler;
-import com.emc.ia.sdk.sip.assembly.DefaultPackagingInformationFactory;
-import com.emc.ia.sdk.sip.assembly.OneSipPerDssPackagingInformationFactory;
-import com.emc.ia.sdk.sip.assembly.PackagingInformation;
-import com.emc.ia.sdk.sip.assembly.PackagingInformationFactory;
-import com.emc.ia.sdk.sip.assembly.PdiAssembler;
-import com.emc.ia.sdk.sip.assembly.SequentialDssIdSupplier;
-import com.emc.ia.sdk.sip.assembly.SipAssembler;
-import com.emc.ia.sdk.sip.assembly.SipSegmentationStrategy;
-import com.emc.ia.sdk.sip.assembly.XmlPdiAssembler;
-import com.emc.ia.sdk.support.io.EncodedHash;
+import com.emc.ia.sdk.sip.assembly.*;
 import com.emc.ia.sdk.support.io.FileSupplier;
 import com.emc.ia.sipsdk.lab.exercise6.Exercise6;
 
@@ -49,7 +38,7 @@ public class Answer6 extends Exercise6 {
     PdiAssembler<Country> pdiAssembler = new XmlPdiAssembler<Country>(
         URI.create("urn:emc:ia:sipsdk:lab:country"), "country") {
       @Override
-      protected void doAdd(Country country, Map<String, Collection<EncodedHash>> ignored) {
+      protected void doAdd(Country country, Map<String, ContentInfo> ignored) {
         getBuilder()
             .element("code", country.getCode())
             .element("name", country.getName())

@@ -1,5 +1,5 @@
 = SIPs and SIP Creation
-Tord Svensson <tord.svensson@emc.com>;Ray Sinnema <remon.sinnema@emc.com>
+Tord Svensson;Ray Sinnema <rsinnema@opentext.com>
 
 ifndef::sourcedir[:sourcedir: ../../..]
 
@@ -104,7 +104,7 @@ InfoArchive is _connector agnostic_.
 ** Build PDI using fluent XML builder or template
 ** Multiple segmentation strategies
 ** Multiple DSS ID naming strategies
-* Ingest SIPs into InfoArchive (work in progress)
+* Ingest SIPs into InfoArchive
 
 <<<
 
@@ -207,7 +207,7 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip
 include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContentHashing.java[tags=hashing]
 ----
 <1> The `HashAssembler` computes a hash of the `DigitalObject` and encodes it in ASCII form. Default is
-SHA-1 hash with Base64 encoding, but other hash functions are available and so is Hex encoding.
+SHA-256 hash with Base64 encoding, but other hash functions are available and so is Hex encoding.
 The result of this hashing is a `EncodedHash` object that contains the hash function, the encoding algorithm, and
 the encoded hash value. The encoded hashes are made available to the `PdiAssembler` for inclusion in the PDI (see
 <<Define how to convert POJOs to PDI>>)
@@ -247,13 +247,16 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Segmentati
 
 == Ingestion
 
-Ingestion is currently being worked on.
+Ingestion is also supported. It requires a running instance of InfoArchive that is configured with a holding. Or you
+can even use the SIP SDK to configure the holding for you. We will not cover ingestion in this presentation; see the
+https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/tree/master/samples/sample-3-ingest[ingestion
+sample] in the SDK for details.
 
 <<<
 
 == Conclusion
 
-* EMC InfoArchive SIP SDK makes SIP generation and ingestion easy as pie
+* OpenText InfoArchive SIP SDK makes SIP generation and ingestion easy as pie
 * Open source for maximum exposure
 * Feedback is welcome
 ** Use the https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/issues[GitHub issues]

@@ -6,15 +6,9 @@ package com.emc.ia.sipsdk.lab;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Collection;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.FileGenerator;
-import com.emc.ia.sdk.sip.assembly.PackagingInformation;
-import com.emc.ia.sdk.sip.assembly.PdiAssembler;
-import com.emc.ia.sdk.sip.assembly.SipAssembler;
-import com.emc.ia.sdk.sip.assembly.XmlPdiAssembler;
-import com.emc.ia.sdk.support.io.EncodedHash;
+import com.emc.ia.sdk.sip.assembly.*;
 import com.emc.ia.sipsdk.lab.exercise1.Exercise1;
 
 
@@ -37,7 +31,7 @@ public class Answer1 extends Exercise1 {
     PdiAssembler<Country> pdiAssembler = new XmlPdiAssembler<Country>(
         URI.create("urn:emc:ia:sipsdk:lab:country"), "country") {
       @Override
-      protected void doAdd(Country country, Map<String, Collection<EncodedHash>> ignored) {
+      protected void doAdd(Country country, Map<String, ContentInfo> ignored) {
         getBuilder()
             .element("code", country.getCode())
             .element("name", country.getName())

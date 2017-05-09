@@ -6,16 +6,9 @@ package com.emc.ia.sipsdk.presentation;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Collection;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.BatchSipAssembler;
-import com.emc.ia.sdk.sip.assembly.PackagingInformation;
-import com.emc.ia.sdk.sip.assembly.PdiAssembler;
-import com.emc.ia.sdk.sip.assembly.SipAssembler;
-import com.emc.ia.sdk.sip.assembly.SipSegmentationStrategy;
-import com.emc.ia.sdk.sip.assembly.XmlPdiAssembler;
-import com.emc.ia.sdk.support.io.EncodedHash;
+import com.emc.ia.sdk.sip.assembly.*;
 
 
 public final class MyFirstSips {
@@ -38,10 +31,9 @@ public final class MyFirstSips {
         // end::manifest[]
 
     // tag::conversion[]
-    PdiAssembler<Person> pdiAssembler = new XmlPdiAssembler<Person>(
-        PERSON_NAMESPACE, "person") {
+    PdiAssembler<Person> pdiAssembler = new XmlPdiAssembler<Person>(PERSON_NAMESPACE, "person") {
       @Override
-      protected void doAdd(Person person, Map<String, Collection<EncodedHash>> ignored) {
+      protected void doAdd(Person person, Map<String, ContentInfo> ignored) {
         getBuilder()
             .element("firstname", person.getFirstName())
             .element("lastname", person.getLastName());
