@@ -150,7 +150,7 @@ Download from https://github.com/Enterprise-Content-Management/infoarchive-sip-s
 
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=manifest]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSip.java[tags=manifest]
 ----
 
 <<<
@@ -158,7 +158,7 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip
 == Define POJOs
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Person.java[tags=pojo]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/Person.java[tags=pojo]
 ----
 
 <<<
@@ -168,14 +168,14 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Person.jav
 === Using a fluent XML builder
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=conversion]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSip.java[tags=conversion]
 ----
 <1> Encoded hashes are covered in <<Hashing Contents>>
 
 === Using a template
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipByTemplate.java[tags=conversion]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSipByTemplate.java[tags=conversion]
 ----
 <1> The fixed header
 <2> The fixed footer
@@ -187,7 +187,7 @@ access the encoded hashes (see <<Hashing Contents>>)
 == Generate SIPs
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSip.java[tags=generate]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSip.java[tags=generate]
 ----
 <1> Generate the SIP in a randomly named file in the current directory. Other strategies for creating files are
 available, including the option to have full control by providing a `Supplier<File>`
@@ -197,14 +197,14 @@ available, including the option to have full control by providing a `Supplier<Fi
 == Including Contents
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContent.java[tags=extraction]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSipWithContent.java[tags=extraction]
 ----
 <1> `DigitalObject` provides multiple convenience methods to get to an InputStream
 
 == Hashing Contents
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSipWithContentHashing.java[tags=hashing]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSipWithContentHashing.java[tags=hashing]
 ----
 <1> The `HashAssembler` computes a hash of the `DigitalObject` and encodes it in ASCII form. Default is
 SHA-256 hash with Base64 encoding, but other hash functions are available and so is Hex encoding.
@@ -217,21 +217,21 @@ the encoded hash value. The encoded hashes are made available to the `PdiAssembl
 == Batch Generation of SIPs
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/MyFirstSips.java[tags=generate]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/MyFirstSips.java[tags=generate]
 ----
 
 == Default Batch Segmentation Strategies
 
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=default]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/SegmentationStrategies.java[tags=default]
 ----
 <1> All sizes are in number of uncompressed bytes
 
 == Combined Batch Segmentation Strategies
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=combining]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/SegmentationStrategies.java[tags=combining]
 ----
 
 <<<
@@ -240,7 +240,7 @@ include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/Segmentati
 
 [source,java,indent=0]
 ----
-include::{sourcedir}/presentation/java/com/emc/ia/sipsdk/presentation/SegmentationStrategies.java[tags=custom]
+include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/SegmentationStrategies.java[tags=custom]
 ----
 
 <<<
