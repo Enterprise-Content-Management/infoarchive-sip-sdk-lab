@@ -6,11 +6,21 @@ package com.opentext.ia.sipsdk.lab;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.*;
-import com.emc.ia.sdk.support.io.FileSupplier;
+import com.opentext.ia.sdk.sip.BatchSipAssembler;
+import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
+import com.opentext.ia.sdk.sip.XmlPdiAssembler;
+import com.opentext.ia.sdk.support.io.FileSupplier;
 import com.opentext.ia.sipsdk.lab.exercise5.Exercise5;
 
 

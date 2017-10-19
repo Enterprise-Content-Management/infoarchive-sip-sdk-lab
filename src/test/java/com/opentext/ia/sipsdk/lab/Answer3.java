@@ -11,8 +11,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.*;
-import com.emc.ia.sdk.support.io.FileBuffer;
+import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.XmlPdiAssembler;
+import com.opentext.ia.sdk.support.io.FileBuffer;
 import com.opentext.ia.sipsdk.lab.exercise3.Exercise3;
 
 

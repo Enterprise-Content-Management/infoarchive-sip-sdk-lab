@@ -3,9 +3,9 @@
  */
 package com.opentext.ia.sipsdk.presentation;
 
-import com.emc.ia.sdk.sip.assembly.SipMetrics;
-import com.emc.ia.sdk.sip.assembly.SipSegmentationStrategy;
-import com.emc.ia.sdk.support.io.FileSize;
+import com.opentext.ia.sdk.sip.SipMetrics;
+import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
+import com.opentext.ia.sdk.support.io.FileSize;
 
 
 public final class SegmentationStrategies {

@@ -5,8 +5,12 @@ package com.opentext.ia.sipsdk.lab;
 
 import java.io.File;
 
-import com.emc.ia.sdk.sip.assembly.*;
-import com.emc.ia.sip.assembly.stringtemplate.StringTemplate;
+import com.opentext.ia.sdk.sip.FileGenerator;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.TemplatePdiAssembler;
+import com.opentext.ia.sip.assembly.stringtemplate.StringTemplate;
 import com.opentext.ia.sipsdk.lab.exercise2.Exercise2;
 
 

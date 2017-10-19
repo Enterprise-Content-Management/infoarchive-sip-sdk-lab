@@ -8,7 +8,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.*;
+import com.opentext.ia.sdk.sip.BatchSipAssembler;
+import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
+import com.opentext.ia.sdk.sip.XmlPdiAssembler;
 
 
 public final class MyFirstSips {

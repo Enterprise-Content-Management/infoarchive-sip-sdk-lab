@@ -6,7 +6,7 @@ package com.opentext.ia.sipsdk.lab.exercise4;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.emc.ia.sdk.support.xml.XmlBuilder;
+import com.opentext.ia.sdk.support.xml.XmlBuilder;
 import com.opentext.ia.sipsdk.lab.Exercise;
 
 

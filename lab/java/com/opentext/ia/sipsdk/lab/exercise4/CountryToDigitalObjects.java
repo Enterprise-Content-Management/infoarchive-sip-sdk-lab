@@ -6,8 +6,8 @@ package com.opentext.ia.sipsdk.lab.exercise4;
 import java.util.Collections;
 import java.util.Iterator;
 
-import com.emc.ia.sdk.sip.assembly.DigitalObject;
-import com.emc.ia.sdk.sip.assembly.DigitalObjectsExtraction;
+import com.opentext.ia.sdk.sip.DigitalObject;
+import com.opentext.ia.sdk.sip.DigitalObjectsExtraction;
 import com.opentext.ia.sipsdk.lab.exercise1.Country;
 
 

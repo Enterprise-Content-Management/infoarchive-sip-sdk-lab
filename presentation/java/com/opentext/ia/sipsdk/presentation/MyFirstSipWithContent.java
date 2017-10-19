@@ -9,7 +9,14 @@ import java.net.URI;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import com.emc.ia.sdk.sip.assembly.*;
+import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.DigitalObject;
+import com.opentext.ia.sdk.sip.DigitalObjectsExtraction;
+import com.opentext.ia.sdk.sip.FileGenerator;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.XmlPdiAssembler;
 
 
 public final class MyFirstSipWithContent {

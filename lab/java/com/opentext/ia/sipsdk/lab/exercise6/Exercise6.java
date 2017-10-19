@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 import org.w3c.dom.Element;
 
-import com.emc.ia.sdk.support.xml.XmlUtil;
+import com.opentext.ia.sdk.support.xml.XmlUtil;
 import com.opentext.ia.sipsdk.lab.Exercise;
 
 

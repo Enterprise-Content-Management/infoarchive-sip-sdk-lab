@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.emc.ia.sdk.support.xml.XmlBuilder;
+import com.opentext.ia.sdk.support.xml.XmlBuilder;
 import com.opentext.ia.sipsdk.lab.Exercise;
 
 

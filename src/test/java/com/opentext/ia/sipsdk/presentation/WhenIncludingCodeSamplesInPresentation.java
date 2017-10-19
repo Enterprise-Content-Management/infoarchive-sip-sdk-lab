@@ -3,7 +3,10 @@
  */
 package com.opentext.ia.sipsdk.presentation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,12 +23,12 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.emc.ia.sdk.support.io.DefaultDirectoryListener;
-import com.emc.ia.sdk.support.io.Delete;
-import com.emc.ia.sdk.support.io.DirectoryListener;
-import com.emc.ia.sdk.support.io.RepeatableInputStream;
-import com.emc.ia.sdk.support.xml.XmlBuilder;
-import com.emc.ia.sdk.support.xml.XmlUtil;
+import com.opentext.ia.sdk.support.io.DefaultDirectoryListener;
+import com.opentext.ia.sdk.support.io.Delete;
+import com.opentext.ia.sdk.support.io.DirectoryListener;
+import com.opentext.ia.sdk.support.io.RepeatableInputStream;
+import com.opentext.ia.sdk.support.xml.XmlBuilder;
+import com.opentext.ia.sdk.support.xml.XmlUtil;
 
 
 public class WhenIncludingCodeSamplesInPresentation {

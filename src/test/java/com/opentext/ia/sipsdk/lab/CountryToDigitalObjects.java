@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Locale;
 
-import com.emc.ia.sdk.sip.assembly.DigitalObject;
-import com.emc.ia.sdk.sip.assembly.DigitalObjectsExtraction;
+import com.opentext.ia.sdk.sip.DigitalObject;
+import com.opentext.ia.sdk.sip.DigitalObjectsExtraction;
 
 
 public class CountryToDigitalObjects implements DigitalObjectsExtraction<Country> {

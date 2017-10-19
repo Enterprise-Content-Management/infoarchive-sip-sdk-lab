@@ -3,13 +3,20 @@
  */
 package com.opentext.ia.sipsdk.lab;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.function.Consumer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -19,11 +26,11 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.emc.ia.sdk.support.io.DefaultDirectoryListener;
-import com.emc.ia.sdk.support.io.Delete;
-import com.emc.ia.sdk.support.io.DirectoryListener;
-import com.emc.ia.sdk.support.io.RepeatableInputStream;
-import com.emc.ia.sdk.support.xml.XmlUtil;
+import com.opentext.ia.sdk.support.io.DefaultDirectoryListener;
+import com.opentext.ia.sdk.support.io.Delete;
+import com.opentext.ia.sdk.support.io.DirectoryListener;
+import com.opentext.ia.sdk.support.io.RepeatableInputStream;
+import com.opentext.ia.sdk.support.xml.XmlUtil;
 
 
 /**
@@ -89,7 +96,9 @@ public abstract class Exercise {
           Delete.file(sip);
         }
       }
-      assertFalse("Extra file", files.hasNext());
+      if (files.hasNext()) {
+        fail("Extra file: " + files.next());
+      }
     } finally {
       while (files.hasNext()) {
         Delete.file(files.next());

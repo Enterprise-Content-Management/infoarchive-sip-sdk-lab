@@ -11,8 +11,18 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Map;
 
-import com.emc.ia.sdk.sip.assembly.*;
-import com.emc.ia.sdk.support.io.FileSupplier;
+import com.opentext.ia.sdk.sip.BatchSipAssembler;
+import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.DefaultPackagingInformationFactory;
+import com.opentext.ia.sdk.sip.OneSipPerDssPackagingInformationFactory;
+import com.opentext.ia.sdk.sip.PackagingInformation;
+import com.opentext.ia.sdk.sip.PackagingInformationFactory;
+import com.opentext.ia.sdk.sip.PdiAssembler;
+import com.opentext.ia.sdk.sip.SequentialDssIdSupplier;
+import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
+import com.opentext.ia.sdk.sip.XmlPdiAssembler;
+import com.opentext.ia.sdk.support.io.FileSupplier;
 import com.opentext.ia.sipsdk.lab.exercise6.Exercise6;
 
 
