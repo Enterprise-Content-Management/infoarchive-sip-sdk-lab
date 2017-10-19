@@ -119,7 +119,7 @@ include::samples/build.gradle[]
 <1> All SIP SDK jars are stored in the Central Repository
 <2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). We tested this lab with
 include::../../../gradle.properties[tags=sipSdkVersion]
-. For the latest version, see GitHub or the Maven Central Repository
+For the latest version, see GitHub or the Maven Central Repository. 
 You may need additional jars if you want to work with a template engine, as discussed in <<Using a template>>
 
 <<<

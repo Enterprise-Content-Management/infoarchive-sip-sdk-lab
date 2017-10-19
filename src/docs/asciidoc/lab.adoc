@@ -70,8 +70,9 @@ methods, because you'll need them in later exercises.
 http://www.visitsweden.com/sweden/[Sweden].
 ** Finally, we let the `FileGenerator` generate the SIP. 
 
-TIP: If you find anything unclear or see other opportunities for improvement, please report them to your instructor so
-we can address them in future versions of this lab.
+TIP: If you find anything unclear or see other opportunities for improvement, please report them to your instructor 
+or https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk-lab/issues[raise an issue on GitHub] so we can
+address them in future versions of this lab.
 
 <<<
 
@@ -116,7 +117,8 @@ Test to run:: `com.opentext.ia.sipsdk.lab.exercise3.Exercise3`
 
 === Guidance
 * Most of the code for this exercise will be the same as for the previous two exercises, but the PDI will now contain
-multiple countries. You can start from either `Exercise1` or `Exercise2` and make the required modifications.
+multiple countries. You can start from either `Exercise1` or `Exercise2` and make the required modifications. Unless 
+you were already familiar with StringTemplate before this lab, we suggest using the `XmlPdiAssembler` of exercise 1.
 * We will no longer use a `FileGenerator` in this exercise, because we want to iterate over a number of countries, as
 returned by a SQL query. Replace the `FileGenerator` with direct calls to the `SipAssembler`. Use the Javadoc to
 find out which calls to make, or consult the implementation of `FileGenerator` and the `Generator` class from which
@@ -185,7 +187,7 @@ number.
 
 Introduction:: In the previous exercise, all the generated SIPs were part of the same _Data Submission Session_ (DSS),
 because they shared the same DSS ID. All SIPs in a DSS are ingested into InfoArchive as a single atomic unit. Sometimes
-you'd want to ingest multiple SIPs independently.
+you'd want to ingest multiple SIPs independently, for instance in active archiving use cases.
 
 image::images/batch-sips-multiple-dsses.png[align="center"]
 Objective:: Spread data over multiple DSSes.

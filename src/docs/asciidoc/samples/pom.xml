@@ -19,8 +19,8 @@
     <developer>
       <id>ray</id>
       <name>Remon Sinnema</name>
-      <email>remon.sinnema@emc.com</email>
-      <organization>EMC</organization>
+      <email>rsinnema@opentext.com</email>
+      <organization>OpenText</organization>
       <timezone>Europe/Amsterdam</timezone>
     </developer>
     <developer>
@@ -48,7 +48,7 @@
     <dependency>
       <groupId>com.emc.ia</groupId>
       <artifactId>infoarchive-sip-sdk-core</artifactId>
-      <version>5.6.2</version>
+      <version>9.0.1</version>
     </dependency>
     <!-- end::dependency[] -->
     <dependency>
