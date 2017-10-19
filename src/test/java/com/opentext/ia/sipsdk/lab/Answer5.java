@@ -3,7 +3,6 @@
  */
 package com.opentext.ia.sipsdk.lab;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.Connection;
@@ -56,7 +55,7 @@ public class Answer5 extends Exercise5 {
 
     // Generate a batch of SIPs
     BatchSipAssembler<Country> batchAssembler = new BatchSipAssembler<>(sipAssembler,
-        SipSegmentationStrategy.byMaxAius(2), FileSupplier.fromDirectory(new File("."), "sip-", ".zip"));
+        SipSegmentationStrategy.byMaxAius(2), FileSupplier.fromDirectory(getExerciseDir(), "sip-", ".zip"));
 
     // Select all countries with InfoArchive development teams
     Connection connection = DriverManager.getConnection(

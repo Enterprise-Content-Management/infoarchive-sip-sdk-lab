@@ -54,6 +54,8 @@ and `Country`.
 
 image::images/eclipse-passing-test.png[align="center"]
 * *Congratulations!* You've just assembled your first SIP with the SDK :-)
+* You can find the generated SIP in the `build/exercises/1` directory. Feel free to open the ZIP file and inspect its
+contents. 
 * Review the provided code carefully, because you will need to understand it to be able to complete the upcoming 
 exercises. The Javadoc for the various interfaces and classes may help you with that.
 * The `Country` class is our domain object. It is a _Plain Old Java Object_ (POJO) that holds the required

@@ -52,7 +52,8 @@ public class Answer4 extends Exercise4 {
         new CountryToDigitalObjects());
 
     // Use a file generator to drive the SIP assembler and store the result in a file named 'sweden.sip'.
-    FileGenerator<Country> generator = new FileGenerator<>(sipAssembler, () -> new File("sweden.sip"));
+    FileGenerator<Country> generator = new FileGenerator<>(sipAssembler,
+        () -> new File(getExerciseDir(), "sweden.sip"));
 
     // Create a domain object for the country of Sweden.
     Country sweden = new Country("SE", "Sweden", "Stockholm");

@@ -27,7 +27,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import com.opentext.ia.sdk.support.io.DefaultDirectoryListener;
-import com.opentext.ia.sdk.support.io.Delete;
 import com.opentext.ia.sdk.support.io.DirectoryListener;
 import com.opentext.ia.sdk.support.io.RepeatableInputStream;
 import com.opentext.ia.sdk.support.xml.XmlUtil;
@@ -53,6 +52,7 @@ public abstract class Exercise {
 
   private final DirectoryListener directoryListener = new DefaultDirectoryListener();
   private final int exerciseNumber;
+  private File buildDir;
 
   public Exercise(int exerciseNumber) {
     this.exerciseNumber = exerciseNumber;
@@ -60,8 +60,19 @@ public abstract class Exercise {
 
   @Before
   public void init() {
-    directoryListener.listenIn(new File("."));
+    buildDir = new File("build/exercises/" + getExerciseNumber());
+    buildDir.mkdirs();
+    directoryListener.listenIn(buildDir);
     directoryListener.addedFiles(); // Not interested in existing files
+  }
+
+  private String getExerciseNumber() {
+    String result = getClass().getName();
+    return result.substring(result.length() - 1);
+  }
+
+  protected File getExerciseDir() {
+    return buildDir;
   }
 
   @Test
@@ -85,24 +96,14 @@ public abstract class Exercise {
       // Ignore
     }
     Iterator<File> files = directoryListener.addedFiles();
-    try {
-      List<String> names = new ArrayList<>(Arrays.asList(digitalObjectNames));
-      for (int n = 1; n <= numSips; n++) {
-        assertTrue("Missing SIP #" + n, files.hasNext());
-        File sip = files.next();
-        try {
-          assertSip(sip, pdiChecker, sipChecker, names);
-        } finally {
-          Delete.file(sip);
-        }
-      }
-      if (files.hasNext()) {
-        fail("Extra file: " + files.next());
-      }
-    } finally {
-      while (files.hasNext()) {
-        Delete.file(files.next());
-      }
+    List<String> names = new ArrayList<>(Arrays.asList(digitalObjectNames));
+    for (int n = 1; n <= numSips; n++) {
+      assertTrue("Missing SIP #" + n, files.hasNext());
+      File sip = files.next();
+      assertSip(sip, pdiChecker, sipChecker, names);
+    }
+    if (files.hasNext()) {
+      fail("Extra file: " + files.next());
     }
   }
 

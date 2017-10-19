@@ -49,7 +49,7 @@ public class Answer3 extends Exercise3 {
 
     // Create a SIP assembler for just PDI, no content.
     SipAssembler<Country> sipAssembler = SipAssembler.forPdi(prototype, pdiAssembler);
-    sipAssembler.start(new FileBuffer(new File("countries.sip")));
+    sipAssembler.start(new FileBuffer(new File(getExerciseDir(), "countries.sip")));
 
     // Select all countries with InfoArchive development teams
     Connection connection = DriverManager.getConnection(
