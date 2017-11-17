@@ -3,13 +3,41 @@ Tord Svensson;Ray Sinnema <rsinnema@opentext.com>
 
 ifndef::sourcedir[:sourcedir: ../../..]
 
-== Overview
 
-This lab contains exercises that together should take about 40-60 minutes.
+== Introduction
 
-IMPORTANT: We assume you have the lab code ready to go in an IDE with which you are comfortable. If this is not
-the case, you may need more time to get set up. Your instructor or one of the other students can probably help you with 
-that.
+This lab contains exercises that together should take about 40-60 minutes. This is assuming you have the lab code ready
+to go in an IDE with which you are comfortable. If this is not the case, you may need more time to get set up.
+
+
+=== Setting up your environment
+
+To set up the lab, start by checking out the code from GitHub:
+
+    git clone https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk-lab.git
+    
+You'll need the command-line `git` tool for this, which you can download from https://git-scm.com/downloads.
+Alternatively, your IDE may have a way to get the code from GitHub without using the command-line.
+
+The next step is to prepare your IDE for working on the lab.
+
+In a command terminal, go into the lab directory that was created in the previous step. Then, for Eclipse, run
+
+    gradlew eclipse
+
+Or for IDEA, run
+
+    gradlew idea
+    
+This will download the required third-party dependencies and create project files for your IDE. The SDK consists of
+multiple jars, as explained in the
+https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk#overview[SDK overview].
+In this lab, we will mostly use only `infoarchive-sdk-core-x.y.z.jar`, but Exercise 2 also requires 
+`infoarchive-sdk-stringtemplate-x.y.z.jar`. Both jars have their own dependencies that will be downloaded when
+you execute the above commands.
+
+
+=== Completing exercises
 
 To complete an exercise, you make a unit test pass that we've provided for you. The purpose of each test will be 
 explained below. You can run a test as many times as you like to check your progress. A passing test proves that you 
@@ -21,13 +49,18 @@ The exercises start out simple and move to progressively more complex use cases.
 You'll find the source code for the exercises in `$LAB_HOME/lab/java/`, where `$LAB_HOME` is the 
 directory in which the lab resides. Additional resource files are in `$LAB_HOME/lab/resources/`.
 
-For each exercise there is a corresponding class named `Exercise<n>`, when `<n>` is the number of the exercise. This 
+For each exercise there is a corresponding class named `Exercise<n>`, where `<n>` is the number of the exercise. This 
 class lives in the package `com.opentext.ia.sipsdk.lab.exercise<n>`. The exercise class contains a method 
 `performAssignment()` that you must implement. It also contains code to check whether you did the work correctly. The
 latter code should not be modified and is marked as such.
 
 TIP: You may want to pair up with someone else and do the exercises together, in particular if your environment is not 
 set up properly or you are not very proficient in coding.
+
+You may want to compare your solutions to the canonical answers in 
+`$LAB_HOME/src/test/java/`. For each exercise there is a corresponding answer in the class 
+`com.opentext.ia.sipsdk.lab.Answer<n>`, where `<n>` is again the number of the exercise. We suggest you hold off
+looking at the answers until you've completed the exercises, or get stuck.
 
 <<<
 
@@ -95,9 +128,10 @@ Test to run:: `com.opentext.ia.sipsdk.lab.exercise2.Exercise2`
 `Exercise1` into `Exercise2`. Add an `import` statement to `Exercise2` for accessing the `Country` class.
 * Change the `PdiAssembler` from `XmlPdiAssembler` to `TemplatePdiAssembler`.
 * You will have to provide a `Template` instance in the constructor. The SDK supports multiple template engines, but
-in this lab we will restrict ourselves to http://www.stringtemplate.org/[StringTemplate].
-* The `StringTemplate` class emits a fixed header and footer, while each domain object is converted using an actual
-template. This template will have access to the domain object using the `model` variable. Variable parts in the
+in this lab we will restrict ourselves to the http://www.stringtemplate.org/[StringTemplate] engine.
+* The `StringTemplate` class (from the `infoarchive-sdk-stringtemplate-x.y.z.jar`) emits a fixed header and
+footer, while each domain object is converted using an actual template.
+This template will have access to the domain object using the `model` variable. Variable parts in the
 template start and end with `$`. To access the name of a country, for example, you'd write `$model.name$`.
 * Provide the header, footer, and template to convert the `Country` domain object to XML.
 * Run the test to verify your work.
