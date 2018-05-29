@@ -1,4 +1,4 @@
-= InfoArchive SIP SDK Lab
+= InfoArchive SDK Lab
 Tord Svensson;Ray Sinnema <rsinnema@opentext.com>
 
 ifndef::sourcedir[:sourcedir: ../../..]

@@ -93,8 +93,8 @@ InfoArchive is _connector agnostic_.
 ** Documentum
 ** Sharepoint
 
-== InfoArchive SIP SDK
-* To facilitate SIP creation and ingestion we are proud to present the InfoArchive SIP SDK
+== InfoArchive SDK
+* To facilitate SIP creation and ingestion we are proud to present the InfoArchive SDK
 * Open source under https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License 2.0]
 * Available from https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk[GitHub]
 
@@ -116,8 +116,8 @@ InfoArchive is _connector agnostic_.
 ----
 include::samples/build.gradle[]
 ----
-<1> All SIP SDK jars are stored in the Central Repository
-<2> The SIP SDK Maven coordinates (Group/Artifact/Version or GAV). We tested this lab with
+<1> All SDK jars are stored in the Central Repository
+<2> The SDK Maven coordinates (Group/Artifact/Version or GAV). We tested this lab with
 include::../../../gradle.properties[tags=sipSdkVersion]
 For the latest version, see GitHub or the Maven Central Repository. 
 You may need additional jars if you want to work with a template engine, as discussed in <<Using a template>>
@@ -248,7 +248,7 @@ include::{sourcedir}/presentation/java/com/opentext/ia/sipsdk/presentation/Segme
 == Ingestion
 
 Ingestion is also supported. It requires a running instance of InfoArchive that is configured with a holding. Or you
-can even use the SIP SDK to configure the holding for you. We will not cover ingestion in this presentation; see the
+can even use the SDK to configure the holding for you. We will not cover ingestion in this presentation; see the
 https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/tree/master/samples/sample-3-ingest[ingestion
 sample] in the SDK for details.
 
@@ -256,7 +256,7 @@ sample] in the SDK for details.
 
 == Conclusion
 
-* OpenText InfoArchive SIP SDK makes SIP generation and ingestion easy as pie
+* OpenText InfoArchive SDK makes SIP generation and ingestion easy as pie
 * Open source for maximum exposure
 * Feedback is welcome
 ** Use the https://github.com/Enterprise-Content-Management/infoarchive-sip-sdk/issues[GitHub issues]
