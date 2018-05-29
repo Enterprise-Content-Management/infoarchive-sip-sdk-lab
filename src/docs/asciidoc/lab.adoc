@@ -50,7 +50,7 @@ You'll find the source code for the exercises in `$LAB_HOME/lab/java/`, where `$
 directory in which the lab resides. Additional resource files are in `$LAB_HOME/lab/resources/`.
 
 For each exercise there is a corresponding class named `Exercise<n>`, where `<n>` is the number of the exercise. This 
-class lives in the package `com.opentext.ia.sipsdk.lab.exercise<n>`. The exercise class contains a method 
+class lives in the package `com.opentext.ia.sdk.lab.exercise<n>`. The exercise class contains a method 
 `performAssignment()` that you must implement. It also contains code to check whether you did the work correctly. The
 latter code should not be modified and is marked as such.
 
@@ -59,7 +59,7 @@ set up properly or you are not very proficient in coding.
 
 You may want to compare your solutions to the canonical answers in 
 `$LAB_HOME/src/test/java/`. For each exercise there is a corresponding answer in the class 
-`com.opentext.ia.sipsdk.lab.Answer<n>`, where `<n>` is again the number of the exercise. We suggest you hold off
+`com.opentext.ia.sdk.lab.Answer<n>`, where `<n>` is again the number of the exercise. We suggest you hold off
 looking at the answers until you've completed the exercises, or get stuck.
 
 <<<
@@ -71,7 +71,7 @@ Introduction:: The first exercise is just to get you comfortable with the lab pr
 
 Objective:: Generate a SIP from a single POJO.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise1.Exercise1`
+Test to run:: `com.opentext.ia.sdk.lab.exercise1.Exercise1`
 
 === Guidance
 * Run the test. In Eclipse, for instance, you would use the keyboard shortcut `Shift+Alt+X T` or use the context menu
@@ -121,7 +121,7 @@ you're already using a template engine in your project. You may also be able to 
 image::images/template-engine.png[align="center"] 
 Objective:: Generate a SIP containing PDI generated from a template.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise2.Exercise2`
+Test to run:: `com.opentext.ia.sdk.lab.exercise2.Exercise2`
 
 === Guidance
 * We're going to achieve exactly the same as in the previous exercise, so you may start out with copying code from
@@ -149,7 +149,7 @@ http://www.h2database.com/html/main.html[H2] in-memory database to hold our data
 image::images/sql-query.png[align="center"] 
 Objective:: Generate a SIP from data retrieved from a SQL database.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise3.Exercise3`
+Test to run:: `com.opentext.ia.sdk.lab.exercise3.Exercise3`
 
 === Guidance
 * Most of the code for this exercise will be the same as for the previous two exercises, but the PDI will now contain
@@ -179,7 +179,7 @@ any kind of source.
 image::images/media.png[align="center"]
 Objective:: Generate a SIP with binary content.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise4.Exercise4`
+Test to run:: `com.opentext.ia.sdk.lab.exercise4.Exercise4`
 
 === Guidance
 * We'll use a single domain object in this exercise, so start with a copy of either exercise 1 or 2. Unless you were
@@ -205,7 +205,7 @@ often too large to make that approach feasible.
 image::images/batch-sips-one-dss.png[align="center"]
 Objective:: Spread data over multiple SIPs.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise5.Exercise5`
+Test to run:: `com.opentext.ia.sdk.lab.exercise5.Exercise5`
 
 === Guidance
 * Start with a copy of exercise 3.
@@ -228,7 +228,7 @@ you'd want to ingest multiple SIPs independently, for instance in active archivi
 image::images/batch-sips-multiple-dsses.png[align="center"]
 Objective:: Spread data over multiple DSSes.
 
-Test to run:: `com.opentext.ia.sipsdk.lab.exercise6.Exercise6`
+Test to run:: `com.opentext.ia.sdk.lab.exercise6.Exercise6`
 
 === Guidance
 * Start with a copy of exercise 5.

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016-2017 by OpenText Corporation. All Rights Reserved.
  */
-package com.opentext.ia.sipsdk.presentation;
+package com.opentext.ia.sdk.presentation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,6 +23,10 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.opentext.ia.sdk.presentation.MyFirstSip;
+import com.opentext.ia.sdk.presentation.MyFirstSipByTemplate;
+import com.opentext.ia.sdk.presentation.MyFirstSipWithContent;
+import com.opentext.ia.sdk.presentation.MyFirstSipWithContentHashing;
 import com.opentext.ia.sdk.support.io.DefaultDirectoryListener;
 import com.opentext.ia.sdk.support.io.Delete;
 import com.opentext.ia.sdk.support.io.DirectoryListener;

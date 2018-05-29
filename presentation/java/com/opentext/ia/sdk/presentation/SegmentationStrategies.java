@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016-2017 by OpenText Corporation. All Rights Reserved.
  */
-package com.opentext.ia.sipsdk.presentation;
+package com.opentext.ia.sdk.presentation;
 
 import com.opentext.ia.sdk.sip.SipMetrics;
 import com.opentext.ia.sdk.sip.SipSegmentationStrategy;

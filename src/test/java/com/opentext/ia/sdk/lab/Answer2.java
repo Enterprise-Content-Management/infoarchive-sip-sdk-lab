@@ -1,31 +1,28 @@
 /*
  * Copyright (c) 2016-2017 by OpenText Corporation. All Rights Reserved.
  */
-package com.opentext.ia.sipsdk.lab;
+package com.opentext.ia.sdk.lab;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Map;
 
-import com.opentext.ia.sdk.sip.ContentInfo;
 import com.opentext.ia.sdk.sip.FileGenerator;
 import com.opentext.ia.sdk.sip.PackagingInformation;
 import com.opentext.ia.sdk.sip.PdiAssembler;
 import com.opentext.ia.sdk.sip.SipAssembler;
-import com.opentext.ia.sdk.sip.XmlPdiAssembler;
-import com.opentext.ia.sipsdk.lab.exercise1.Exercise1;
+import com.opentext.ia.sdk.sip.TemplatePdiAssembler;
+import com.opentext.ia.sip.assembly.stringtemplate.StringTemplate;
+import com.opentext.ia.sipsdk.lab.exercise2.Exercise2;
 
 
-public class Answer1 extends Exercise1 {
+public class Answer2 extends Exercise2 {
 
   @Override
-  protected void performAssignment() throws IOException {
+  protected void performAssignment() throws Exception {
     // Build a prototype for the packaging information.
     PackagingInformation prototype = PackagingInformation.builder()
         .dss()
             .holding("lab")
-            .application("exercise1")
+            .application("exercise2")
             .producer("student")
             .entity("country")
             .schema("urn:emc:ia:sipsdk:lab:country")
@@ -33,16 +30,10 @@ public class Answer1 extends Exercise1 {
         .build();
 
     // Define how domain objects are serialized into the PDI.
-    PdiAssembler<Country> pdiAssembler = new XmlPdiAssembler<Country>(
-        URI.create("urn:emc:ia:sipsdk:lab:country"), "country") {
-      @Override
-      protected void doAdd(Country country, Map<String, ContentInfo> ignored) {
-        getBuilder()
-            .element("code", country.getCode())
-            .element("name", country.getName())
-            .element("capital", country.getCapital());
-      }
-    };
+    PdiAssembler<Country> pdiAssembler = new TemplatePdiAssembler<>(new StringTemplate<>(
+        "<countries xmlns=\"urn:emc:ia:sipsdk:lab:country\">",
+        "</countries>",
+        "<country><code>$model.code$</code><name>$model.name$</name><capital>$model.capital$</capital></country>"));
 
     // Create a SIP assembler for just PDI, no content.
     SipAssembler<Country> sipAssembler = SipAssembler.forPdi(prototype, pdiAssembler);

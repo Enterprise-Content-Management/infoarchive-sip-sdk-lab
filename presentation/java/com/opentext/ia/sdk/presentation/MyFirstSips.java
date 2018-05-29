@@ -1,33 +1,29 @@
 /*
  * Copyright (c) 2016-2017 by OpenText Corporation. All Rights Reserved.
  */
-package com.opentext.ia.sipsdk.presentation;
+package com.opentext.ia.sdk.presentation;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
-import java.util.stream.Stream;
 
+import com.opentext.ia.sdk.sip.BatchSipAssembler;
 import com.opentext.ia.sdk.sip.ContentInfo;
-import com.opentext.ia.sdk.sip.DigitalObject;
-import com.opentext.ia.sdk.sip.DigitalObjectsExtraction;
-import com.opentext.ia.sdk.sip.FileGenerator;
 import com.opentext.ia.sdk.sip.PackagingInformation;
 import com.opentext.ia.sdk.sip.PdiAssembler;
 import com.opentext.ia.sdk.sip.SipAssembler;
+import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
 import com.opentext.ia.sdk.sip.XmlPdiAssembler;
 
 
-public final class MyFirstSipWithContent {
+public final class MyFirstSips {
 
   private static final URI PERSON_NAMESPACE = URI.create("urn:eas-samples:en:xsd:persons.1.0");
 
-  private MyFirstSipWithContent() { }
+  private MyFirstSips() { }
 
   public static void main(String[] args) throws IOException {
-    Person person = new Person("Donald", "Duck");
-
     // tag::manifest[]
     PackagingInformation prototype = PackagingInformation.builder()
         .dss()
@@ -38,11 +34,10 @@ public final class MyFirstSipWithContent {
             .schema("myuri")
         .end()
         .build();
-    // end::manifest[]
+        // end::manifest[]
 
     // tag::conversion[]
-    PdiAssembler<Person> pdiAssembler = new XmlPdiAssembler<Person>(
-        PERSON_NAMESPACE, "person") {
+    PdiAssembler<Person> pdiAssembler = new XmlPdiAssembler<Person>(PERSON_NAMESPACE, "person") {
       @Override
       protected void doAdd(Person person, Map<String, ContentInfo> ignored) {
         getBuilder()
@@ -52,20 +47,21 @@ public final class MyFirstSipWithContent {
     };
     // end::conversion[]
 
-    // tag::extraction[]
-    DigitalObjectsExtraction<Person> extraction = p -> Stream.of(
-        DigitalObject.fromFile(p.getId(), getFileFor(p.getId())) // <1>
-    ).iterator();
-    SipAssembler<Person> sipAssembler = SipAssembler.forPdiAndContent(prototype, pdiAssembler, extraction);
-    // end::extraction[]
+    // tag::generate[]
+    SipAssembler<Person> sipAssembler = SipAssembler.forPdi(prototype, pdiAssembler);
+    SipSegmentationStrategy<Person> segmentationStrategy = SipSegmentationStrategy.byMaxAius(10);
+    BatchSipAssembler<Person> batchAssembler = new BatchSipAssembler<>(sipAssembler,
+        segmentationStrategy, new File("."));
 
-    FileGenerator<Person> generator = new FileGenerator<>(sipAssembler, new File("."));
-
-    generator.generate(person);
+    for (int i = 0; i < 30; ++i) {
+      batchAssembler.add(newPerson(i));
+    }
+    batchAssembler.end();
+    // end::generate[]
   }
 
-  private static File getFileFor(String id) {
-    return new File("src/docs/asciidoc/images/" + id.replace(' ', '_') + ".png");
+  private static Person newPerson(int i) {
+    return new Person("FirstName-" + i, "LastName-" + i);
   }
 
 }
