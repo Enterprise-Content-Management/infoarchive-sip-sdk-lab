@@ -217,9 +217,23 @@ the encoded hash value. The encoded hashes are made available to the `PdiAssembl
 <<<
 
 == Batch Generation of SIPs
+The example is below:
 [source,java,indent=0]
 ----
 include::{sourcedir}/presentation/java/com/opentext/ia/sdk/presentation/MyFirstSips.java[tags=generate]
+----
+Method 'SipAssembler.forPdi' convenient to use in case of small amount of AIUs, because it uses in-memory buffer
+for preserving them.
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/opentext/ia/sdk/presentation/MyFirstSips.java[tags=inMemoryBuffer]
+----
+If there are huge amount of AIUs with the method, then depending on the memory
+allocated for JVM, it is a risk to meet OutOfMemory exception.
+In this case, in order to create a PDI with huge amount of AIUs, it is required to use below:
+[source,java,indent=0]
+----
+include::{sourcedir}/presentation/java/com/opentext/ia/sdk/presentation/MyFirstSips.java[tags=fileBuffer]
 ----
 
 == Default Batch Segmentation Strategies

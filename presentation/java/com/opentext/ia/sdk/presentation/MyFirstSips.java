@@ -9,13 +9,17 @@ import java.net.URI;
 import java.util.Map;
 
 import com.opentext.ia.sdk.sip.BatchSipAssembler;
+import com.opentext.ia.sdk.sip.ContentAssembler;
 import com.opentext.ia.sdk.sip.ContentInfo;
+import com.opentext.ia.sdk.sip.DefaultPackagingInformationFactory;
 import com.opentext.ia.sdk.sip.PackagingInformation;
 import com.opentext.ia.sdk.sip.PdiAssembler;
 import com.opentext.ia.sdk.sip.SipAssembler;
 import com.opentext.ia.sdk.sip.SipSegmentationStrategy;
 import com.opentext.ia.sdk.sip.XmlPdiAssembler;
-
+import com.opentext.ia.sdk.support.io.DataBufferSupplier;
+import com.opentext.ia.sdk.support.io.FileBuffer;
+import com.opentext.ia.sdk.support.io.NoHashAssembler;
 
 public final class MyFirstSips {
 
@@ -48,7 +52,7 @@ public final class MyFirstSips {
     // end::conversion[]
 
     // tag::generate[]
-    SipAssembler<Person> sipAssembler = SipAssembler.forPdi(prototype, pdiAssembler);
+    SipAssembler<Person> sipAssembler = getSipAssemblerWithInMemoryBuffering(prototype, pdiAssembler);
     SipSegmentationStrategy<Person> segmentationStrategy = SipSegmentationStrategy.byMaxAius(10);
     BatchSipAssembler<Person> batchAssembler = new BatchSipAssembler<>(sipAssembler,
         segmentationStrategy, new File("."));
@@ -58,6 +62,22 @@ public final class MyFirstSips {
     }
     batchAssembler.end();
     // end::generate[]
+  }
+
+  private static SipAssembler<Person> getSipAssemblerWithInMemoryBuffering(PackagingInformation prototype,
+      PdiAssembler<Person> pdiAssembler) {
+    // tag::inMemoryBuffer[]
+    return SipAssembler.forPdi(prototype, pdiAssembler);
+    // end::inMemoryBuffer[]
+  }
+
+  private SipAssembler<Person> getSipAssemblerWithFileBuffering(PackagingInformation prototype,
+      PdiAssembler<Person> pdiAssembler) {
+    // tag::fileBuffer[]
+    return new SipAssembler<>(new DefaultPackagingInformationFactory(prototype),
+        pdiAssembler, new NoHashAssembler(), new DataBufferSupplier<>(
+        FileBuffer.class), ContentAssembler.ignoreContent());
+    // end::fileBuffer[]
   }
 
   private static Person newPerson(int i) {
